@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User List</title>
+</head>
+<body>
+<h1>User List</h1>
+<th:block th:if="${usersEmpty}">
+  <p>No users found in the database.</p>
+</th:block>
+<th:block th:unless="${usersEmpty}">
+  <ul>
+    <li th:each="user : ${users}">
+      <a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"></a>
+    </li>
+  </ul>
+</th:block>
+</body>
+</html>
